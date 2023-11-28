@@ -1,4 +1,4 @@
-package de.telran.module_1.lesson_1.module_1.lesson_1.homework5;
+package de.telran.module_1.lesson_1.module_1.lesson_1.homework5.task1;
 
 public class DietApp {
     public static void main(String[] args) {
