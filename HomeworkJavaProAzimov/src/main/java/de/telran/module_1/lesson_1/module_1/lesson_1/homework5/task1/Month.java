@@ -25,14 +25,6 @@ public enum Month {
         this.season = season;
     }
 
-    public String getRussianName() {
-        return russianName;
-    }
-
-    public String getSeason() {
-        return season;
-    }
-
     public  String recommendDiet(){
         switch (season){
         case "Зима":
