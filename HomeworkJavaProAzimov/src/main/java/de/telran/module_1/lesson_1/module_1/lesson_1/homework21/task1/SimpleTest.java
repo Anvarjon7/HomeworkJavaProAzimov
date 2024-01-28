@@ -1,13 +1,22 @@
 package de.telran.module_1.lesson_1.module_1.lesson_1.homework21.task1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 
 public class SimpleTest {
+    public static void main(String[] args) {
+        int[] arr1 = {1, 2, 3, 4, 5};
+        int[] arr2 = {1, 2, 5, 5, 8, 9, 7, 10};
 
+        int[] a = removeDuplicates(arr2);
+        System.out.println(Arrays.toString(a));
+    }
 
-//    1.Напишите программу на Java для поиска общих элементов между двумя массивами целых чисел
+    //    1.Напишите программу на Java для поиска общих элементов между двумя массивами целых чисел
     public static int[] findCommonElem(int[] arr1, int[] arr2) {
-        int[] elem = new int[Math.min(arr1.length,arr2.length)];
+        int[] elem = new int[Math.min(arr1.length, arr2.length)];
         int count = 0;
 
         for (int i = 0; i < arr1.length; i++) {
@@ -18,39 +27,41 @@ public class SimpleTest {
                 }
             }
         }
-        return Arrays.copyOf(elem,count);
+        return Arrays.copyOf(elem, count);
     }
 
-//    2.Напишите программу на Java для удаления повторяющихся элементов из массива.
-    public static int[] removeDuplicates(int[] arr){
-        int n = arr.length;
-        if (n <= 1) {
-            return arr;
-        }
-        Arrays.sort(arr);
-        int j = 0;
-        for (int i = 1; i < n; i++) {
-            if (arr[i] != arr[j]){
-                j++;
-                arr[j] = arr[i];
+    //    2.Напишите программу на Java для удаления повторяющихся элементов из массива.
+    public static int[] removeDuplicates(int[] array) {
+
+        HashSet<Integer> uniqueSet = new HashSet<>();
+        List<Integer> resultList = new ArrayList<>();
+
+        for (int element : array) {
+            if (uniqueSet.add(element)) {
+
+                resultList.add(element);
             }
         }
-        int[] uniqueArr = Arrays.copyOf(arr,j + 1);
-        return uniqueArr;
+
+        int[] uniqueArray = new int[resultList.size()];
+        for (int i = 0; i < resultList.size(); i++) {
+            uniqueArray[i] = resultList.get(i);
+        }
+
+        return uniqueArray;
     }
 
-//    3.Напишите программу на Java для поиска второго по величине элемента в массиве.
 
-    public static int findSecondLargest(int[] arr){
+    public static int findSecondLargest(int[] arr) {
         int n = arr.length;
-        if (n < 2)return -1;
+        if (n < 2) return -1;
 
         int firstLargestEl = Integer.MIN_VALUE;
         int secondLargestEl = Integer.MAX_VALUE;
 
 
         for (int i = 0; i < n; i++) {
-            if (arr[i] > firstLargestEl){
+            if (arr[i] > firstLargestEl) {
                 secondLargestEl = firstLargestEl;
                 firstLargestEl = arr[i];
             } else if (arr[i] > secondLargestEl && arr[i] != firstLargestEl) {
@@ -62,22 +73,26 @@ public class SimpleTest {
 
 //    4. Напишите программу Java для поиска второго наименьшего элемента в массиве.
 
-    public static int findSecondSmallest(int[] arr){
+    public static int findSecondSmallest(int[] arr) {
         int n = arr.length;
         if (n < 2) return -1;
 
         int firstSmallest = Integer.MAX_VALUE;
-        int secondSmallest =Integer.MIN_VALUE;
+        int secondSmallest = Integer.MIN_VALUE;
 
         for (int i = 0; i < n; i++) {
-            if (arr[i] < firstSmallest){
+            if (arr[i] < firstSmallest) {
                 secondSmallest = firstSmallest;
                 firstSmallest = arr[i];
-            }
-            else if (arr[i] < secondSmallest && arr[i] != firstSmallest){
+            } else if (arr[i] < secondSmallest && arr[i] != firstSmallest) {
                 secondSmallest = arr[i];
             }
         }
         return secondSmallest;
     }
+
+    public static void resetArray(int[] arr) {
+        Arrays.fill(arr, 0);
+    }
+
 }
